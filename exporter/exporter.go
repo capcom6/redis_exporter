@@ -42,6 +42,10 @@ type Exporter struct {
 	mux *http.ServeMux
 
 	buildInfo BuildInfo
+
+	// bcryptMtx is there to ensure that bcrypt.CompareHashAndPassword is run
+	// only once in parallel as this is CPU intensive.
+	bcryptMtx sync.Mutex
 }
 
 type Options struct {
@@ -75,6 +79,7 @@ type Options struct {
 	PingOnConnect         bool
 	Registry              *prometheus.Registry
 	BuildInfo             BuildInfo
+	WebConfigFile         string
 }
 
 // NewRedisExporter returns a new exporter of Redis metrics.

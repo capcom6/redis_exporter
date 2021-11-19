@@ -89,6 +89,7 @@ func main() {
 		pingOnConnect        = flag.Bool("ping-on-connect", getEnvBool("REDIS_EXPORTER_PING_ON_CONNECT", false), "Whether to ping the redis instance after connecting")
 		inclSystemMetrics    = flag.Bool("include-system-metrics", getEnvBool("REDIS_EXPORTER_INCL_SYSTEM_METRICS", false), "Whether to include system metrics like e.g. redis_total_system_memory_bytes")
 		skipTLSVerification  = flag.Bool("skip-tls-verification", getEnvBool("REDIS_EXPORTER_SKIP_TLS_VERIFICATION", false), "Whether to to skip TLS verification")
+		webConfigFile        = flag.String("web.config", "", "[EXPERIMENTAL] Path to config yaml file that can enable authentication.")
 	)
 	flag.Parse()
 
@@ -172,6 +173,7 @@ func main() {
 			RedisMetricsOnly:      *redisMetricsOnly,
 			PingOnConnect:         *pingOnConnect,
 			Registry:              registry,
+			WebConfigFile:         *webConfigFile,
 			BuildInfo: exporter.BuildInfo{
 				Version:   BuildVersion,
 				CommitSha: BuildCommitSha,
