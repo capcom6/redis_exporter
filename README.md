@@ -150,6 +150,7 @@ namespace                   | REDIS_EXPORTER_NAMESPACE                   | Names
 connection-timeout          | REDIS_EXPORTER_CONNECTION_TIMEOUT          | Timeout for connection to Redis instance, defaults to "15s" (in Golang duration format)
 web.listen-address          | REDIS_EXPORTER_WEB_LISTEN_ADDRESS          | Address to listen on for web interface and telemetry, defaults to `0.0.0.0:9121`.
 web.telemetry-path          | REDIS_EXPORTER_WEB_TELEMETRY_PATH          | Path under which to expose metrics, defaults to `/metrics`.
+web.config                  | n/a                                        | [EXPERIMENTAL] Path to web config file. See [HTTPS Package for Prometheus](https://github.com/prometheus/exporter-toolkit/blob/v0.1.0/https/README.md). Only `basic_auth_users` section supported.
 redis-only-metrics          | REDIS_EXPORTER_REDIS_ONLY_METRICS          | Whether to also export go runtime metrics, defaults to false.
 include-system-metrics      | REDIS_EXPORTER_INCL_SYSTEM_METRICS         | Whether to include system metrics like `total_system_memory_bytes`, defaults to false.
 ping-on-connect             | REDIS_EXPORTER_PING_ON_CONNECT             | Whether to ping the redis instance after connecting and record the duration as a metric, defaults to false.
